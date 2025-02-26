@@ -1,8 +1,9 @@
 import { useUserData } from "../../../../hooks/UserData";
 import "./UpdateProfil.scss";
 import iconEdit from "../../../../assets/PredictPage/pen_edit.svg";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { apiRequest } from "../../../utils/api";
+import Dialog from "../Dialog/Dialog";
 
 interface IPropsPatch {
 	first_name: string;
@@ -21,7 +22,7 @@ const UpdateProfil = () => {
 
 	const [dataPatch, setDataPatch] = useState<IPropsPatch>();
 
-	const refModal = useRef<HTMLDialogElement>(null);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const patchUpdateProfil = async (data: IPropsPatch) => {
 		try {
@@ -34,8 +35,7 @@ const UpdateProfil = () => {
 
 	const handleUpdateProfil = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
-		refModal.current?.showModal();
+		setIsOpen(true);
 		const myFormData = new FormData(e.currentTarget);
 		if (!user) return;
 		const newUser = {
@@ -49,22 +49,16 @@ const UpdateProfil = () => {
 		setDataPatch(newUser);
 	};
 
-	const handlePassword = (e: React.FormEvent<HTMLFormElement>) => {
+	const handlePassword = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setIsOpen(false);
 		const myFormData = new FormData(e.currentTarget);
 		const newPassword = myFormData.get("password") as string;
-		console.log(newPassword);
 		const newProfil = {
 			...dataPatch,
 			password: newPassword,
 		} as IPropsPatch;
 		patchUpdateProfil(newProfil);
-		refModal.current?.close();
-	};
-
-	const handleCloseModal = (e: React.FormEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		refModal.current?.close();
 	};
 
 	return (
@@ -111,23 +105,31 @@ const UpdateProfil = () => {
 				/>
 				<img src={iconEdit} alt="" className="updateProfil__photo__edit" />
 			</div>
-			<dialog ref={refModal}>
-				<form onSubmit={handlePassword}>
-					<label htmlFor="password">
+			<Dialog isOpen={isOpen} onClose={() => setIsOpen(false)}>
+				<form onSubmit={handlePassword} className="dialog__form">
+					<label htmlFor="password" className="dialog__form__label">
 						Veuillez saisir votre mot de passe pour valider les modifications
 						apportées a votre compte
 					</label>
-					<input type="password" id="password" name="password" />
-					<button type="submit">envoyer</button>
+					<input
+						type="password"
+						id="password"
+						name="password"
+						className="dialog__form__input"
+					/>
+					<button type="submit" className="dialog__form__btn">
+						envoyer
+					</button>
 					<button
 						type="button"
-						onClick={handleCloseModal}
-						onKeyDown={handleCloseModal}
+						onClick={() => setIsOpen(false)}
+						onKeyDown={() => setIsOpen(false)}
+						className="dialog__form__btnClose"
 					>
 						X
 					</button>
 				</form>
-			</dialog>
+			</Dialog>
 		</div>
 	);
 };
