@@ -89,12 +89,13 @@
                 // grid-template-columns: repeat(1, 1fr) ;
                 grid-template-columns: repeat(auto-fill, minmax(510px, 1fr));
                 height: auto;
-                margin-top: -5rem;
+                margin: -5rem 0 5rem;
                 // position: relative; /* Ajoutez cette ligne pour permettre le positionnement absolu du pseudo-élément */
         }
 
         // CSS pilotant l'affichage du troisième container
         &__ranking{
+            width: 80%;
             height: auto;
             padding: 2rem 0;
             color: white;
@@ -103,7 +104,10 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            z-index: 0;
+            z-index: 1;
+            border-radius: 1rem;
+            margin: 0 auto -18rem;
+            background-color: #030D1E;
 
 
 
@@ -152,12 +156,12 @@
                 &__top{
                     text-align: center;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
                     justify-content: center; 
                     
-                    @media (min-width: 768px) {
-                                flex-direction: row;
-                        }
+                    // @media (min-width: 768px) {
+                    //             flex-direction: row;
+                    //     }
                         
                 }
         }
@@ -173,6 +177,7 @@
             align-items: center;
             background-color:#FEFFEF ;
             position:relative ;
+            padding: 19rem 4rem 0;
 
             
 
@@ -211,7 +216,7 @@
 }
 
 
-@media (max-width: 748px) {
+@media (max-width: 768px) {
     .homePage{
         &__container{
             &__catchPhrases{
@@ -228,6 +233,11 @@
                     padding: 0.7rem 5rem;
                 }
    
+            }
+            &__ranking {
+                &__top {
+                    flex-direction: column;
+                }
             }
         }
     }
@@ -259,10 +269,14 @@
                 flex-direction: column;
                 // position: relative; /* Ajoutez cette ligne pour permettre le positionnement absolu du pseudo-élément */
             }
-
+            &__ranking {
+                &__title{
+                    font-size: 2.5rem;
+                }
+            }
             &__joinUs{
 
-            
+                padding: 19rem 2rem 0;
 
                 &__title{
                     font-size: 2rem;
@@ -271,6 +285,10 @@
 
                 &__paragraph{
                     text-align: center;
+                }
+                &__callToAction {
+                    font-size: 0.9;
+                    padding: 0.7rem 2rem;
                 }
             }
         }
