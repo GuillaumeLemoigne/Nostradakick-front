@@ -9,7 +9,7 @@ import React, { useRef, useState } from "react";
 export default function () {
 	const { user } = useUserData();
 	const navigate = useNavigate();
-	const [isActive, setIsActive] = useState('');
+	const [isActive, setIsActive] = useState("");
 	const [position, setPosition] = useState({
 		left: 0,
 		width: 0,
@@ -18,8 +18,8 @@ export default function () {
 	const menuRef = useRef<HTMLAnchorElement>(null);
 	const listRef = useRef<HTMLUListElement>(null);
 
-	const handleIsActive = (lien) => {
-		setIsActive(lien);
+	const handleIsActive = (link: string) => {
+		setIsActive(link);
 	};
 	console.log(isActive);
 
@@ -28,8 +28,6 @@ export default function () {
 		if (!listElement) return;
 		const listRect = listElement.getBoundingClientRect();
 		const itemRect = e.currentTarget.getBoundingClientRect();
-		
-
 
 		setPosition({
 			width: itemRect.width,
@@ -50,9 +48,9 @@ export default function () {
 						<li className="menu__desktop__logged__header__list__item">
 							<Link
 								to="/predictions"
-								className={`menu__desktop__logged__header__list__item__link${isActive === 'predictions' ? '__active' : ''}`}
+								className={`menu__desktop__logged__header__list__item__link${isActive === "predictions" ? "__active" : ""}`}
 								onMouseMove={handleMouseMove}
-								onClick={() => handleIsActive('predictions')}
+								onClick={() => handleIsActive("predictions")}
 								ref={menuRef as React.RefObject<HTMLAnchorElement>}
 							>
 								Prédiction
@@ -61,9 +59,9 @@ export default function () {
 						<li className="menu__desktop__logged__header__list__item">
 							<Link
 								to="/resultats"
-								className={`menu__desktop__logged__header__list__item__link${isActive === 'resultats' ? '__active' : ''}`}
+								className={`menu__desktop__logged__header__list__item__link${isActive === "resultats" ? "__active" : ""}`}
 								onMouseEnter={handleMouseMove}
-								onClick={() => handleIsActive('resultats')}
+								onClick={() => handleIsActive("resultats")}
 								ref={menuRef}
 							>
 								Résultats
@@ -72,9 +70,9 @@ export default function () {
 						<li className="menu__desktop__logged__header__list__item">
 							<Link
 								to="/classement"
-								className={`menu__desktop__logged__header__list__item__link${isActive === 'classement' ? '__active' : ''}`}
+								className={`menu__desktop__logged__header__list__item__link${isActive === "classement" ? "__active" : ""}`}
 								onMouseEnter={handleMouseMove}
-								onClick={() => handleIsActive('classement')}
+								onClick={() => handleIsActive("classement")}
 								ref={menuRef}
 							>
 								Classement

@@ -11,6 +11,7 @@ import Team from "./Team/Team";
 import { apiRequest } from "../../utils/api";
 import { toast } from "react-toastify";
 
+
 interface PredictCardLoggedProps {
 	match: IMatch;
 	initialPrediction?: IPropsCreatePredict;

@@ -1,9 +1,11 @@
 .updateProfil{
     display: flex;
+    flex-direction:column-reverse;
     justify-content: center;
+
     gap: 2rem;
     width: 600px;
-    padding:3rem 0 3rem 3rem;
+    padding:0rem 0 3rem 3rem;
 
     margin-bottom: 1rem;
 
@@ -41,7 +43,7 @@
         
         & input {
             display: block;
-            width: 400px;
+            width:  400px;
             height: 40px;
             margin: 0.5rem 0 1rem;
 
@@ -95,9 +97,98 @@
             outline: 2px solid #0D1F3C;
 
             position: absolute;
-            top: 30%;
-            right: 1rem;
+            top: 23%;
+            left: 8rem;
 
         }
     }
+}
+
+.dialog__form {
+    &__label {
+        display: block;
+        font-weight: 700;
+        text-align: center;
+        padding: 2rem;
+    }
+    &__input {
+        display: block;
+        margin: -1rem auto 0;
+        background-color: #35507a;
+        height: 40px;
+        width: 200px;
+        padding-left: 1rem;
+
+        border: none;
+        border-radius: 0.3rem;
+    }
+    &__btn {
+        display: block;
+        margin: 1rem auto;
+
+        padding: 0.5rem 2rem;
+        border: none;
+        background-color: #3B9CF1;
+        border-radius: 0.3rem;
+        color: #FEFFED;
+        font-weight: 700;
+    }
+
+    &__btnClose {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+
+        background-color: transparent;
+        color: #FEFFED;
+
+
+        border-radius: 50%;
+
+        width: 30px;
+        height: 30px;
+
+        border: 1px solid #FEFFED;
+    
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .updateProfil{
+        padding-bottom: 6rem;
+        position: relative;
+
+        &::before {
+            padding-top: 1px;
+            padding-left: 0px; 
+
+            background: linear-gradient(90deg, #0D1F3C, #FEFFED, #0D1F3C);
+
+        }
+
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .updateProfil{
+        flex-direction:column-reverse;
+        width: 100%;
+        padding: 2rem 0 6rem 0;
+
+        &__form {
+
+            & input {
+                width: 300px;
+            }
+        }
+
+        &__photo {
+            &__edit {
+                top: 20%;
+                left: 4.5rem;
+            }
+        }
+
+    }
+    
 }
