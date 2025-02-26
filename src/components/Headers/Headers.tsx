@@ -9,7 +9,11 @@ interface IPropsHearders {
 	setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Headers = ({ setShowStats, setShowPredict, setShowSettings }:IPropsHearders) => {
+const Headers = ({
+	setShowStats,
+	setShowPredict,
+	setShowSettings,
+}: IPropsHearders) => {
 	const location = useLocation();
 
 	if (location.pathname === "/login" || location.pathname === "/signup") {
