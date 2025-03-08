@@ -1,5 +1,5 @@
 import "./404.scss";
-import logo from "../../assets/Header/Logo.svg";
+import logo from "../../assets/smartselect_20250227_094441_video_player_360.gif";
 import Header_desktop from "../Headers/Header_desktop/Header_desktop";
 
 export const NotFoundPage = () => {
