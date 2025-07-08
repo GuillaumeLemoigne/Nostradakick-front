@@ -75,9 +75,9 @@ export const RankPage = () => {
 						<h3 className="rank__List__head__left__title">Pseudo</h3>
 					</div>
 					<div className="rank__List__head__right">
-						<h3 className="rank__List__head__left__title">Good</h3>
-						<h3 className="rank__List__head__left__title">Exact</h3>
-						<h3 className="rank__List__head__left__title">Points</h3>
+						<h3 className="rank__List__head__right__title">Good</h3>
+						<h3 className="rank__List__head__right__title">Exact</h3>
+						<h3 className="rank__List__head__right__title">Points</h3>
 					</div>
 				</div>
 
